@@ -1,10 +1,6 @@
 # ####### The cube on the coordinate level is described by a 3-tuple of natural numbers in phase 1 and phase 2. ########
 
-
-#import cubie as cb
-#import enums
 import moves as mv
-#import pruning as pr
 from defs import N_MOVE
 
 SOLVED = 0  # 0 is index of solved state (except for u_edges coordinate)

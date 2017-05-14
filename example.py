@@ -4,10 +4,6 @@ cubestring = 'FFBLBRDLDUBRRFDDLRLUUUFB'  # cube definition string of cube we wan
 # See module enums.py for the format of the cube definition string
 
 # ######################### Method 1: directly call the solve routine# #################################################
-# Advantage: No network layer needed. Disadvantage: For each solve, the tables have to be loaded which takes a few     #
-# seconds for each new solve.                                                                                          #
-########################################################################################################################
-
 #  Uncomment this part if you want to use method 1
 """
 import solver as sv
@@ -19,9 +15,6 @@ quit()
 
 
 # ############################### Method 2 a/b: Start the cubesolving-server# ##########################################
-# Advantage: Tables have to be loaded only once when the server starts. Disadvantage: Network layer must be present.   #
-########################################################################################################################
-
 #----------------------------------------------------------------------------------------------------------------------
 # Method 2a: Start the server from inside a Python script:
 import start_server

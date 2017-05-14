@@ -1,4 +1,4 @@
-# ####### The cube on the cubie level is described by the permutation and orientations of corners and edges ############
+# ######### The 2x2x2 cube on the cubie level is described by the permutation and orientations of the corners ##########
 
 from defs import cornerFacelet, cornerColor, N_CORNERS, N_TWIST
 from enums import Color, Corner as Co
@@ -26,7 +26,7 @@ CUBE_OK = True
 
 
 class CubieCube:
-    """Represents a cube on the cubie level with 8 corner cubies and the corner orientations.
+    """Represents a 2x2x2 cube on the cubie level with 8 corner cubies and the corner orientations.
 
     Is also used to represent the 18 cube moves.
     """
@@ -117,7 +117,7 @@ class CubieCube:
 
     # ###################################### coordinates for 2x2x2 cube #################################################
     def get_corntwist(self):
-        """The twist of the 8 corners. 0 <= twist < 729 """
+        """The twist of the 8 corners. 0 <= twist < 729. The DBL-corner is fixed."""
         ret = 0
         for i in range(Co.URF, Co.DLF):
             ret = 3 * ret + self.co[i]
@@ -133,7 +133,7 @@ class CubieCube:
 
 
     def get_cornperm(self):
-        """The permutation of the 8 corners. 0 <= corners < 5040 """
+        """The permutation of the 8 corners. 0 <= corners < 5040. The DLB_corner is fixed."""
         perm = list(self.cp)  # duplicate cp
         b = 0
         for j in range(Co.DBL, Co.URF, -1):
@@ -190,7 +190,7 @@ basicMoveCube[Color.R] = CubieCube(cpR, coR)
 basicMoveCube[Color.F] = CubieCube(cpF, coF)
 ########################################################################################################################
 
-# ################################# these cubes represent the all 18 cube moves ########################################
+# ################################# these cubes represent the all 9 cube moves ########################################
 moveCube = [0] * 9
 for c1 in [Color.U, Color.R, Color.F]:
     cc = CubieCube()

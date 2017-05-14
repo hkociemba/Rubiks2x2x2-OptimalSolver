@@ -1,6 +1,5 @@
-# ################### The SolverThread class solves implements the two phase algorithm #################################
+# ###################### The solve function computes all optimal solving maneuvers #####################################
 import face
-import threading as thr
 import cubie
 import coord
 import enums as en
