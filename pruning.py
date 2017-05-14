@@ -33,7 +33,7 @@ def create_cornerprun_table():
                             if corner_depth[idx1] == -1:  # entry not yet filled
                                 corner_depth[idx1] = depth + 1
                                 done += 1
-                                if done % 20000 == 0:
+                                if done % 50000 == 0:
                                     print('.', end='', flush=True)
 
             depth += 1
