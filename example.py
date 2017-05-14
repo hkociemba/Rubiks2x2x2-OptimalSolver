@@ -7,7 +7,7 @@ cubestring = 'FFBLBRDLDUBRRFDDLRLUUUFB'  # cube definition string of cube we wan
 #  Uncomment this part if you want to use method 1
 """
 import solver as sv
-a = sv.solve(cubestring)  # solve with a maximum of 20 moves and a timeout of 2 seconds for example
+a = sv.solve(cubestring)
 print(a)
 quit()
 """
@@ -21,7 +21,7 @@ import start_server
 from threading import Thread
 background_thread = Thread(target=start_server.start, args=(8080,))
 background_thread.start()
-# Server listens now on port 8080, maxlength 20 moves, timeout 2 seconds
+# Server listens now on port 8080
 # ----------------------------------------------------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -35,8 +35,6 @@ background_thread.start()
 # ----------------------------------------------------------------------------------------------------------------------
 # 1. With a webbrowser, if the server runs on the same machine on port 8080
 # http://localhost:8080/FFBLBRDLDUBRRFDDLRLUUUFB
-# With a webbrowser, if the server runs on server myserver.com, port 8081
-# http://myserver.com:8081/FFBLBRDLDUBRRFDDLRLUUUFB
 # ----------------------------------------------------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------------------------------------------------
