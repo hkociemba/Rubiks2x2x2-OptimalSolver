@@ -14,4 +14,3 @@ def rotate_left(arr, l, r):
     for i in range(l, r):
         arr[i] = arr[i+1]
     arr[r] = temp
-    
