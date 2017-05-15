@@ -10,5 +10,5 @@ There is a pruning table which is created on the first run. This needs about 4 M
 
 Make sure that you use Python 3.
 
-![jpg](gui_client.jpg "Animation that shows auto completion")
+![](gui_client.jpg "")
 
