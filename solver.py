@@ -41,8 +41,8 @@ def solve(cubestring):
     """
     global solutions
     fc = face.FaceCube()
-    s = fc.from_string(cubestring)
-    if s != cubie.CUBE_OK:
+    s = fc.from_string(cubestring) #####################################################################################
+    if s is not True:
         return s  # Error in facelet cube
     cc = fc.to_cubie_cube()
     s = cc.verify()

@@ -5,10 +5,8 @@ import socket
 import face
 import cubie
 
-########################################################################################################################
-# ################### Edit the following line to change the U, R, F, D, L, B color assignment ##########################
+# ################################ Edit the following line to use different colors #####################################
 cols = ("yellow", "green", "red", "white", "blue", "orange")
-########################################################################################################################
 ########################################################################################################################
 
 # ################################## some global variables and constants ###############################################
@@ -100,7 +98,7 @@ def solve():
     except:
         show_text('Invalid facelet configuration.\nWrong or missing colors.')
         return
-    show_text(defstr)
+    # show_text(defstr)
     try:
         s.sendall((defstr+'\n').encode())
     except:
@@ -125,8 +123,7 @@ def empty():
     for f in range(6):
         for row in range(2):
             for col in range(2):
-                if (f, row, col) not in ((3, 1, 0), (4, 1, 0), (5, 1, 1)):  # we do not empty DBL-corner
-                    canvas.itemconfig(facelet_id[f][row][col], fill="grey")
+                canvas.itemconfig(facelet_id[f][row][col], fill="grey")
 
 
 def random():
@@ -156,8 +153,6 @@ def click(event):
                 canvas.itemconfig(colorpick_id[i], width=1)
             canvas.itemconfig("current", width=5)
         else:
-            if idlist[0] in (facelet_id[3][1][0],facelet_id[4][1][0],facelet_id[5][1][1]):
-                return  # we never change the DBL corner
             canvas.itemconfig("current", fill=curcol)
 ########################################################################################################################
 

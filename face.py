@@ -2,7 +2,7 @@
 
 from defs import cornerFacelet, cornerColor
 from enums import Color, Corner
-from cubie import CubieCube
+from cubie import CubieCube, CUBE_OK
 
 
 class FaceCube:
@@ -26,7 +26,10 @@ class FaceCube:
         return self.to_string()
 
     def from_string(self, s):
-        """Constructs a facelet cube from a string. See class Facelet(IntEnum) in enums.py for string format."""
+        """Constructs a facelet cube from a string. See class Facelet(IntEnum) in enums.py for string format.
+        
+        The color scheme is detected automatically.
+        """
         if len(s) < 24:
             return 'Error: Cube definition string ' + s + ' contains less than 24 facelets.'
         elif len(s) > 24:
@@ -52,9 +55,34 @@ class FaceCube:
                 self.f[i] = Color.B
                 cnt[Color.B] += 1
         if all(x == 4 for x in cnt):
-            return True
+            # remap colors if necessary
+            col = [self.f[cornerFacelet[Corner.DBL][i]] for i in range(3)]  # colors of the DBL-corner
+            map_col = [-1] * 6
+            for i in range(3):
+                map_col[col[i]] = cornerColor[Corner.DBL][i]  # map colors to right colors
+            # now remap the remaining colors, try all possibilites
+            a = ((Color.U, Color.R, Color.F), (Color.U, Color.F, Color.R), (Color.R, Color.U, Color.F),
+                 (Color.R, Color.F, Color.U), (Color.F, Color.U, Color.R), (Color.F, Color.R, Color.U))
+            empty = []
+            for i in Color:
+                if map_col[i] == -1:
+                    empty.append(i)  # empty contains the 3 indices of the yet nonmapped colors
+            fsave = self.f[:]
+            for c in a:
+                for i in range(3):
+                    map_col[empty[i]] = c[i]
+                self.f = fsave[:]
+                for i in range(24):
+                    self.f[i] = map_col[self.f[i]]  # remap the colors
+                cc = self.to_cubie_cube()
+                s = cc.verify()
+                if s == CUBE_OK:
+                    return True
+
+            return 'Error: Facelet configuration does not define a valid cube.'
         else:
             return 'Error: Cube definition string ' + s + ' does not contain exactly 4 facelets of each color.'
+
 
 
     def to_string(self):
@@ -75,7 +103,6 @@ class FaceCube:
                 s += 'B'
         return s
 
-
     def to_cubie_cube(self):
         """Returns a cubie representation of the facelet cube."""
         cc = CubieCube()
@@ -84,12 +111,13 @@ class FaceCube:
             fac = cornerFacelet[i]  # facelets of corner  at position i
             for ori in range(3):
                 if self.f[fac[ori]] == Color.U or self.f[fac[ori]] == Color.D:
+                    col0 = self.f[fac[ori]]
                     break
             col1 = self.f[fac[(ori + 1) % 3]]  # colors which identify the corner at position i
             col2 = self.f[fac[(ori + 2) % 3]]
             for j in Corner:
                 col = cornerColor[j]  # colors of corner j
-                if col1 == col[1] and col2 == col[2]:
+                if col0 == col[0] and col1 == col[1] and col2 == col[2]:
                     cc.cp[i] = j  # we have corner j in corner position i
                     cc.co[i] = ori
                     break
