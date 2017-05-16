@@ -108,6 +108,7 @@ class FaceCube:
         cc = CubieCube()
         cc.cp = [-1] * 8  # invalidate corner permutation
         for i in Corner:
+            col0 = None
             fac = cornerFacelet[i]  # facelets of corner  at position i
             for ori in range(3):
                 if self.f[fac[ori]] == Color.U or self.f[fac[ori]] == Color.D:
@@ -117,7 +118,7 @@ class FaceCube:
             col2 = self.f[fac[(ori + 2) % 3]]
             for j in Corner:
                 col = cornerColor[j]  # colors of corner j
-                if col0 == col[0] and col1 == col[1] and col2 == col[2]:
+                if col0 != None and col0 == col[0] and col1 == col[1] and col2 == col[2]:
                     cc.cp[i] = j  # we have corner j in corner position i
                     cc.co[i] = ori
                     break
