@@ -104,7 +104,7 @@ def solve():
     except:
         show_text('Cannot send cube configuration to server.')
         return
-    show_text(s.recv(10000).decode())  # we need a big buffer because we return all possible solutions
+    show_text(s.recv(10000).decode())  # big buffer because we return all solutions (196 solutions in "worst" case)
 ########################################################################################################################
 
 # ################################# Functions to change the facelet colors #############################################
@@ -119,7 +119,7 @@ def clean():
 
 
 def empty():
-    """Removes the facelet colors except the center facelets colors."""
+    """Removes the facelet colors."""
     for f in range(6):
         for row in range(2):
             for col in range(2):
@@ -127,7 +127,7 @@ def empty():
 
 
 def random():
-    """ Generates a random cube and sets the corresponding faclet colors."""
+    """Generates a random cube and sets the corresponding facelet colors."""
     cc = cubie.CubieCube()
     cc.randomize()
     fc = cc.to_facelet_cube()
@@ -143,7 +143,7 @@ def random():
 
 
 def click(event):
-    """Defines how to react on left mouseclicks"""
+    """Defines how to react on left mouseclicks."""
     global curcol
     idlist = canvas.find_withtag("current")
     if len(idlist) > 0:

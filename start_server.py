@@ -1,9 +1,7 @@
 # ################# Start the server and listen for connections ########################################################
 
-#from face import FaceCube
 import sockets
 import sys
-#import solver as sv
 
 
 if __name__ == '__main__':  # file is executed
