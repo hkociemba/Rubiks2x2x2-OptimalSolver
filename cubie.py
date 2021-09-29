@@ -155,7 +155,7 @@ class CubieCube:
                 k -= 1
                 # ############################## end coordinates for 2x2x2 cube ########################################
 
-                # #################################### other usefull functions #########################################
+                # #################################### other useful functions ##########################################
 
     def randomize(self):
         """Generates a random cube. The probability is the same for all possible states."""
