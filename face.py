@@ -60,7 +60,7 @@ class FaceCube:
             map_col = [-1] * 6
             for i in range(3):
                 map_col[col[i]] = cornerColor[Corner.DBL][i]  # map colors to right colors
-            # now remap the remaining colors, try all possibilites
+            # now remap the remaining colors, try all possibilities
             a = ((Color.U, Color.R, Color.F), (Color.U, Color.F, Color.R), (Color.R, Color.U, Color.F),
                  (Color.R, Color.F, Color.U), (Color.F, Color.U, Color.R), (Color.F, Color.R, Color.U))
             empty = []
