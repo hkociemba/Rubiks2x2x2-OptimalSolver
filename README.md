@@ -1,14 +1,12 @@
 # Rubiks2x2x2-OptimalSolver
 ## Overview
-This project implements an optimal solver for the 2x2x2 Rubik's cube. All optimal (=shortest) solving maneuvers are computed. The computation time is neglectible.
-The solver only uses moves of the U, R and F faces because the DBL-corner is fixed. The color scheme of the cube is detected automatically.
-
+This project presents an optimal solver for the 2x2x2 Rubik's cube, computing all optimal (shortest) solving maneuvers. The computation time is negligible. The solver exclusively utilizes moves of the U, R, and F faces, as the DBL-corner remains fixed. The cube's color scheme is automatically detected.   
 ## Usage
-There is a pruning table which is created on the first run. This needs about 4 MB disk space and it takes from less than a minute to a couple of minutes to create it, depending on the hardware. Usually you start the cubesolving server which listens on a port of your choice and which accepts the cube definition string and returns the solving maneuver. The module example.py gives detailed examples how to start the server and a simple GUI-interface which interacts with the server. You can run the example file with
+Upon the initial run, a pruning table is created, requiring approximately 4 MB of disk space. The creation process takes anywhere from less than a minute to a couple of minutes, contingent on the hardware. Typically, you initiate the cube-solving server, which listens on a port of your choice, accepting the cube definition string and returning the solving maneuver. The module example.py provides detailed examples on how to commence the server and utilize a simple GUI interface that interacts seamlessly with the server.   
+Execute the example file using "python example.py" or eventually "python3 example.py"
 
-"python example.py" or eventually "python3 example.py"
-
-Make sure that you use Python 3.
+Ensure that you are using Python 3.
 
 ![](gui_client.jpg "")
+
 
