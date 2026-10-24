@@ -5,6 +5,7 @@ import coord
 import enums as en
 import moves as mv
 import pruning as pr
+import continuations as ct
 from defs import N_TWIST
 
 solutions = []
@@ -17,11 +18,12 @@ def search(cornperm, corntwist, sofar, togo):
         if len(solutions) == 0 or (len(solutions[-1]) == len(sofar)):
             solutions.append(sofar[:])
     else:
-        for m in en.Move:
-
-            if len(sofar) > 0:
-                if sofar[-1] // 3 == m // 3: # successive moves on same face
-                    continue
+        moves = (
+            en.Move
+            if len(sofar) == 0
+            else ct.LEGAL_NEXT_MOVES[sofar[-1]]
+        )
+        for m in moves:
 
             cornperm_new = mv.cornperm_move[9 * cornperm + m]
             corntwist_new = mv.corntwist_move[9 * corntwist + m]
